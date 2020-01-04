@@ -1,0 +1,13 @@
+Alex Pendell
+September 24th, 2019
+CIS 303 - p003 pBitMap
+Dr. Ladd
+
+
+This assigment we were tasked with implementing a WorkingBitMap using the BitMap class that was given to us. The default BitMap class that was given did essentially nothing, and we were tasked with implementing all of the functions in a class that extends BitMap; WorkingBitMap.
+
+The testing is done via Catch2, and will take a bit to compile the first time.
+
+To compile, navigate inside the pBitMap folder in the terminal and type "make". This will invoke the MakeFile to build the necessary executables to run the program.
+
+After building is complete, type "./build/testBitMap" into the terminal if you want to run the Catch2 framework, otherwise replace 'testBitMap' with the executable you wish to run.

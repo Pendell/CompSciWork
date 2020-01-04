@@ -1,0 +1,24 @@
+#+STARTUP: showeverything
+#+TITLE: e001 - Midterm Exam
+#+SUBTITLE: CIS 495 Computer Insecurity
+#+DATE: Spring 2018
+#+AUTHOR: Brian C. Ladd
+#+EMAIL: laddbc@potsdam.edu
+
+* Look at the full report on the Morris Worm and describe (one or two paragraphs) the flaw(s) exploited by the SENDMAIL attack in the worm.
+
+* Look at =function.c= along side this exam. Use =make= to build it and =gdb= to sketch a picture of the run-time stack at the moment described in the comments.
+
+* If an integer in C on an Intel processor contained the value 0x40414243, how would it look if it were printed out as a sequence of 4 characters?
+
+* Starting with =shenanigans.c=, modify it so that
+** function =h= so that it
+*** Has a 20 character buffer declared on the stack
+*** Has a =volatile= int declared on the stack
+*** Initializes the int to -1
+*** Loops while the integer is not equal to 0x40414243
+**** Prompts user for a string (you can include hex value of the int if you want)
+**** Uses supplied =gets= function to read into the local buffer
+*** Prints congratulations after the loop terminates
+** =main= begins by printing a string that when pasted into the prompt in =h= satisfies the loop check.
+** NOTE: Use the included =Makefile= to build shenanigans (or at least use the given compiler flags so that the various protections used in modern compilers are turned off).

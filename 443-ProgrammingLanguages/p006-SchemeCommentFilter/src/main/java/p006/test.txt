@@ -1,0 +1,30 @@
+
+ TEST 1: (someFunction a b) ; call the function
+ ;; a bigger section break
+
+ TEST 2: (format-my-print "%a %b %c"#| the format string|#)
+ 
+ TEST 3: ; there was a comment here. #|
+ (no longer commented out)
+ |#
+
+ TEST 4: #| one line
+    two line
+    three line
+    four |# some-atom
+
+ TEST 5: atom1#| something about the Scheme code (will end the line)
+    more information with "embedded" string
+ (code no longer called) ; |#atom2
+ atom3
+ 
+ TEST 6: (setq c "smart; cold; sweet")
+ 
+ TEST 7: (setq b "le backslash - \\";)
+ )
+ 
+ TEST 8: (setq a "the quote, \", is a lie; really")
+ 
+ TEST 9: (setq z "#|")
+ |#
+ 

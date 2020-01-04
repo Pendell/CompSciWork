@@ -1,0 +1,45 @@
+#+STARTUP: showall
+#+TITLE: p004 - Fixed-sized Record File
+#+SUBTITLE: CIS 310: Operating Systems
+#+AUTHOR: Alex Pendell - pendelaj198@potsdam.edu
+#+DATE: October 7th, 2019
+
+* *Compiling*
+  To compile, navigate the terminal to the wherever the program was
+  cloned (you should the folders src and Makefile!). Once there, 
+  enter 'make', which will invoke the g++ compiler to compile the necessary
+  executables. From there, enter 'build/main' followed by a space and then
+  whatever you would like the name of your database file to be. If no database
+  file exists, the program will create one when it needs to write to one.
+  For instance, if you wanted your database to be called 'data.dat',
+  the terminal call would look like, 'build/main data.dat'.When the program
+  is running, the first thing it will tell you is the size of a course, in
+  bytes. It should say '32'. This is for debugging purposes.
+
+* *Interfacing with your database*
+  There are numerous ways to interface with your database simply by typing any
+  of the following commands:
+
+** *add*
+   Allows you to enter a course record number, department, and title
+   in that order to add a course to the database.
+
+** *delete* 
+   Likewise, you can delete any courses you've previously added to the
+   database. *NOTE* Deleting a course does not remove it from the database, simply
+   unsets a byte in the database for the course to be ignored as it searches through.
+
+** *edit*
+   This allows you to edit a preexisting entry within the database.
+
+** *list*
+   Prints all of the entries within the database to the terminal.
+
+** *find* 
+   Searches the database for a specific entry within the database.
+
+** *help*
+   This will display the list of commands available within the program.
+
+** *quit*
+   Terminates the program.

@@ -1,0 +1,111 @@
+/* Alex Pendell
+ * CIS 303 - Operating Systems
+ * fileVSSD.cpp
+ * November 12, 2019
+ */
+
+#include "FileVSSD.h"
+#include <iostream>
+#include <cstring>
+#include <fstream>
+
+struct Metadata {
+  unsigned int size, count;
+  char* ch;
+
+  Metadata(int block_size, int block_count, int buffer){
+    size = block_size;
+    count = block_count;
+    buffer = block_size - 8;
+    ch = new char[buffer];
+  }
+
+  unsigned int* getData() {
+    unsigned int* pointer = &size;
+    return pointer;
+  }
+};
+  
+
+FileVSSD::FileVSSD(unsigned int block_size, unsigned int block_count,
+	 const std::string & filename, bool initialize) {
+
+  // How big each block is
+  block_s = block_size;
+
+  // How many blocks are in the file
+  block_c = block_count;
+  file.open(filename);
+  
+  disk = new PersistentArray(filename);
+  
+  if (initialize) {
+    file.write((char*)&block_s, sizeof(block_s));
+    file.seekp(sizeof(block_s));
+    file.write((char*)&block_c, sizeof(block_c));
+  } else {
+    // Do nothing yet
+  }
+}
+
+FileVSSD::~FileVSSD(){
+  delete(disk);
+  file.close();
+}
+  
+std::size_t FileVSSD::blockSize() const {
+  return block_s;
+}
+  
+std::size_t FileVSSD::blockCount() const {
+  return block_c;
+}
+  
+DiskStatus FileVSSD::status() const {
+  return DiskStatus::OK;
+}
+  
+DiskStatus FileVSSD::read(blocknumber_t block, void * buffer) {
+  if(block == 0) {
+    std::cout << "Block 0 is privileged" << std::endl;
+    char buf[block_s] = {};
+    file.seekp(0);
+    file.read(buf, 4);
+    std::cout << "Size: " << (int*)&buf << std::endl;
+    return DiskStatus::ERROR;
+  } else if (block >= block_c) {
+    std::cout << "Out of bounds. Enter a valid block" << std::endl;
+    return DiskStatus::BLOCK_OUT_OF_RANGE;
+  } else {
+    free(buffer);
+    file.seekp(block_s*block);
+    file.read((char*)&buffer, block_s);
+    return DiskStatus::OK;
+  }
+  
+}
+  
+DiskStatus FileVSSD::write(blocknumber_t block, void * buffer) {
+   if(block == 0) {
+    std::cout << "Block 0 is privileged" << std::endl;
+    
+    return DiskStatus::ERROR;
+  } else if (block >= block_c) {
+    std::cout << "Out of bounds. Enter a valid block" << std::endl;
+    return DiskStatus::BLOCK_OUT_OF_RANGE;
+  } else {
+    file.seekp(block_s*block);
+    file.write((char*)&buffer, block_s);
+    free(buffer);
+    return DiskStatus::OK;
+  }
+}
+
+DiskStatus FileVSSD::sync(){
+  // Do nothing, doesn't work yet.
+  return DiskStatus::OK;
+}
+
+
+
+

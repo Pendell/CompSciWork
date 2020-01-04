@@ -1,0 +1,48 @@
+#+STARTUP: showall
+#+TITLE: BitMap using Catch2 Testing Framework
+#+SUBTITLE: CIS 310: Operating Systems
+#+AUTHOR: Brian C. Ladd
+#+DATE: Fall 2018
+
+* Introduction
+This program tests the =BitMap= class (and reports that it fails). When modified to include the =WorkingBitMap.h= header file with an appropriately named class, it tests that class instead. When an error is reported, the actual type under test is reported.
+
+The main test program uses a generated =main= function from the /Catch 2/ test framework. =testBitMap.cpp= describes correct behavior of a =BitMap= derived class and the /Catch 2/ TDD framework tests the actual behavior against the required behavior. The behavior description is clear and readable as is the report automatically generated when a requirement is not met.
+
+* =BitMap=
+The provided =BitMap= class does as little as possible to compile. The tests run against it mostly fail. All passing behavior is accidental.
+
+---------------------------------------------------------------------------------
+Note: the commands assume you are in the same directory as =Makefile=
+---------------------------------------------------------------------------------
+
+* To Clean
+Removes all compiled files so that the next compilation will be complete rather than
+incremental.
+#+BEGIN_SRC shell
+make clean
+#+END_SRC
+
+* To Compile
+** Time to compile: note that /Catch 2/ is very large. Compiling =testBitMap.cpp= takes ~30 seconds
+#+BEGIN_SRC shell
+make
+#+END_SRC
+
+* To Test
+See *To Run* below; the running behavior for this program is to run the bit map tests.
+
+* To Run
+Each project, when built, shows the name of the executable as the parameter of the -o commandline argument. So, in pBitMap, the commandline make uses is something like
+#+BEGIN_SRC shell
+g++ -std=c++17 -Wall -Werror -g  -o build/testBitMap ...
+#+END_SRC
+
+This tells you that the executable is build in =./build/testBitMap=. The executable is named in the =Makefile=; the source files containing the =main= function is in =src/tools/=.
+
+To run the program, type its path at the commandline
+#+BEGIN_SRC shell
+build/testBitMap
+#+END_SRC
+
+If it takes commandline parameters, they come after the executable

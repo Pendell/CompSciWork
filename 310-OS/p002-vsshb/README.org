@@ -1,0 +1,12 @@
+Alex Pendell
+p002 - Very Simple Shell -- Phase B
+Dr. Brian Ladd - Operating Systems
+September 3rd, 2019
+pendelaj198@potsdam.edu
+
+Very Simple Shell -- Phase B
+
+Problem: The problem we were tasked with was to take user input, and parse them into an 'array' and then echo the input. This is to mimic how bash works when you input commands into the command prompt like 'ls' or 'cd'.
+
+Compiling and Execution: Navigate to the p001 folder in the terminal (if you see the file Makefile, you're in the right place). Type 'make' in the terminal to begin compilation. Once that completes, the next thing to do is to run the executable by typing "./build/vssh-a" in the terminal.
+

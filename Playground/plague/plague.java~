@@ -1,0 +1,62 @@
+import java.io.*;
+import java.lang.*;
+public class plague {
+    public static void main(String[] args) throws Exception {
+	int infections = Integer.parseInt(args[0]);
+        for (int i = 1; i <= infections;i++)
+	    new File("./infections/infection" + i).mkdirs();
+	while(infections > 0) {
+	    File file = new File("./infections/infection" + infections + "/infected.java");
+	    PrintStream ps = new PrintStream(file);
+	    char quote = 34;
+	    char slash = 92;
+	    String[] program = {
+		"        ",
+		"import java.io.*;",
+		"public class infected {",
+		"  public static void main(String[] args) throws Exception {",
+		"    int infections = Integer.parseInt(args[0]);",
+		"    for (int i = 1; i<= infections; i++)",
+		"      new File(\"./infections/infection\" + i).mkdirs();",
+		"    while (infections > 0) {",
+		"      File file = new File(\"./infections/infection\"+infections+\"infected.java\");",
+		"      PrintStream ps = new PrintStream(file);",
+		"      char quote = 34;",
+		"      char slash = 92;",
+		"      String[] program = {",
+		"      };",
+		"      for(int i = 1; i < 13; i++)",
+		"        ps.println(program[i]);",
+		"      for(int i = 0; i < program.length; i++) {",
+		"        if(i == 6) {",
+		"          ps.println(program[0] + quote + program[6].substring(0,15) + slash + program[6].substring(15, 38) + slash + program[6].substring(38) + quote); ",
+		"        } else if (i == 8) {",
+		"          ps.println(program[0] + quote + program[8].substring(0, 27) + slash + program[8].substring(27, 50) + slash + program[8].substring(50, 63) + slash + program[8].substring(63) + quote);",
+		"        } else {",
+		"        ps.println(program[8] + quote + program[i] + quote + ',');",
+		"      for(int i = 13; i < program.length; i++)",
+		"       ps.println(program[i]);",
+		"      infections--;",
+		"    }",
+		"  }",
+		"}",
+	    };
+	    for(int i = 1; i < 13; i++)
+		ps.println(program[i]);
+	    for(int i = 0; i < program.length; i++) {
+		if(i == 6) {
+		    ps.println(program[0] + quote + program[6].substring(0,15) + slash + program[6].substring(15, 38) + slash + program[6].substring(38) + quote);
+		} else if (i == 8) {
+		    ps.println(program[0] + quote + program[8].substring(0, 27) + slash + program[8].substring(27, 50) + slash + program[8].substring(50, 63) + slash + program[8].substring(63) + quote);
+		} else {
+		    ps.println(program[0] + quote + program[i] + quote + ',');
+		}
+		
+	    }
+	    for(int i = 13; i < program.length; i++)
+		ps.println(program[i]);
+	    infections--;
+	}
+    }
+}
+

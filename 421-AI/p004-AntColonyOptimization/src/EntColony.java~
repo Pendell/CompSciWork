@@ -1,0 +1,77 @@
+/* Alex Pendell
+ * CIS 421 - Artificial Intelligence
+ * Assignment 4 - Ant Colony Optimization
+ * November 4th, 2019 <-- Don't let this one slip, Alex!
+ *                        No more late assignments!
+ *
+ * Ant Colony Optimization: The start point is always Blue
+ * Mountains, and the end point is always Iron Hills. Since
+ * this is not a travelling sales person problem, we don't
+ * care about visiting every node in Middle Earth.
+ * 
+ * Overview: Our ants will begin from "Blue Mountains" and will
+ * always end at "Iron Hills". Since this is not TSP, we don't
+ * care about visiting every node in the graph. We will run the
+ * experiment 5 times.
+ * 1st experiment will favor the hueristic.
+ * 2nd experiment will favor the pheromone level.
+ * 3rd experiment eliminates hueristic entirely.
+ * 4th & 5th experiments will test the influence of different
+ *     values for RHO.
+ *
+ * Some considerations given to use via the write-up:
+ * 1. As previously stated this is not a TSP problem. Caution
+ *    is advised when referring to the code in the book.
+ * 2. The graph used is not fully connected. We will need a way
+ *    to backtrack if the ant agent gets stuck (trapped).
+ * 3. Pheromone evaporation can be be done either before OR
+ *    after depositing new pheromone. It is advised to experiment
+ *    with both and see if results reflect any difference.
+ *
+ * Table 1. Parameter values for experiments
+ * o===================================================================o
+ * |  PARAMETER  |  PARAMETER  |  RUN  |  RUN  |  RUN  |  RUN  |  RUN  |
+ * |    NAME     |   MEANING   |   1   |   2   |   3   |   4   |   5   |
+ * |=============|=============|=======|=======|=======|=======|=======|   
+ * |    ALPHA    |  Pheromone  |  0.4  |  1.0  |  1.0  |  1.0  |  1.0  |
+ * |             |   weight    |       |       |       |       |       |
+ * |-------------|-------------|-------|-------|-------|-------|-------|
+ * |    BETA     |  Hueristic  |  1.0  |  0.4  |  0.0* |  1.0  |  1.0  |
+ * |             |   weight    |       |       |       |       |       |
+ * |-------------|-------------|-------|-------|-------|-------|-------|
+ * |     RHO     |    Trail    |  0.65 |  0.65 |  0.65 |  0.4  |  0.95 |
+ * |             | Persistence |       |       |       |       |       |
+ * |-------------|-------------|-------|-------|-------|-------|-------|
+ * |      Q      |  Pheromone  |  100  |  100  |  100  |  100  |  100  |
+ * |             |   Quantity  |       |       |       |       |       |
+ * o===================================================================o
+ */
+
+import java.util.*;
+import java.io.*;
+
+
+public class AntColony {
+    public static void main(String[] args) throws Exception {
+        System.out.println("It's my life! It's now or nevaah!");
+
+        MiddleEarth ME = new MiddleEarth(new File("MiddleEarth.dat"));
+
+        ME.printMap();
+                                                                 
+    }
+}
+
+/* What do we need to do...
+ * 1. Distribute pheromone randomly about the edges (This should be done in
+ *      MiddleEarth.java -> Just add a random number generator to each edge as
+ *      it's created.
+ * 2. Initialize an Ant -> ??? Unsure about what I'm going to need to attach to
+ *      it. Perhaps keep track of the path it's taken so far (Would make back-
+ *      tracking a lot easier).
+ * 3. After the Ant has completed it's trail, distribute pheromone to each of
+ *      the edges it chose. 
+ * 4. Evaporate the phermone via the evaporation equation. This can be done 
+ *      before or after the previous step (3).
+ * 5. Jump back to step 2 and repeat until the number of trials has elapsed.
+ */

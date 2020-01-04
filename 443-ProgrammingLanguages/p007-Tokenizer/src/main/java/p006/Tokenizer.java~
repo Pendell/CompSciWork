@@ -1,0 +1,36 @@
+/* Alex Pendell
+ * p007 - Scheme Tokenizer
+ * Dr. Ladd - Programming Languages
+ * April 1st, 2019
+ */
+
+import java.io.*;
+import java.util.*;
+
+/* The Program */
+
+public abstract class Tokenizer implements Iterable {
+
+    Reader reader;
+
+    public void Tokenizer(File f) {
+	reader = new PushbackReader(f);
+    }
+
+    // We need: <string>, <integer>, <symbol>, <eof>, <error>, ( ) . ` ' , @
+    public void tokenize(File file) {
+	Map<String, String> TokenMap = new HashMap<String,String>() {{
+		put("(", "Left Paren");
+		put(")", "Right paren");
+		put(".", "Period");
+		put("`", "Tick");
+		put("'", "Single Quote");
+		put(",", "Comma");
+		put("@", "At");
+		put("<string>", "String");
+		put("<integer>", "Integer");
+		put("<eof>", "End of File");
+		put("<error>", "Error");
+	    }};
+    }
+}

@@ -1,0 +1,41 @@
+/* Alex Pendell
+ * CIS 303 - Operating Systems
+ * RAMVSSD.h
+ * November 12, 2019
+ */
+
+#ifndef RAMVSSD_H
+#define RAMVSSD_H
+
+#include "VVSSD.h"
+#include <string>
+
+
+vector<char*> ram;
+
+unsigned int BLOCK_SIZE;
+unsigned int BLOCK_COUNT;
+
+class FileVSSD : public VVSSD {
+ public:
+
+  RAMVSSD(unsigned int block_size, unsigned int block_count,
+             const std::string & filename, bool initialize);
+
+  ~RAMVSSD();
+  
+ public:
+  std::size_t blockSize();
+  
+  std::size_t blockCount();
+  
+  DiskStatus stats();
+  
+  DiskStatus read(blocknumber_t block, void * buffer);
+  
+  DiskStatus write(blocknumber_t block, void * buffer);         
+  
+};
+
+
+#endif /* RAMVSSD_H */

@@ -1,0 +1,29 @@
+
+ (someFunction a b) 
+ 
+
+ (format-my-print "%a %b %c" )
+ 
+ 
+ (no longer commented out)
+ |#
+ 
+
+    two line
+    three line
+    four |#some-atom
+
+ atom1
+
+    more information with "embedded" string
+ (code no longer called) 
+ atom3
+ 
+  (setq c "smart; cold; sweet")
+ 
+  (setq b "le backslash - \\"
+    )
+ (setq a "the quote, \", is a lie
+ 
+  (setq z "#|")
+ |# 
